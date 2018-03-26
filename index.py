@@ -1,5 +1,7 @@
 import getframe
 import ocr
 
-# getframe.main('2')
-ocr.main('2')
+video = '2'
+
+getframe.main(video)
+ocr.main(video)
