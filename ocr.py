@@ -35,7 +35,11 @@ def main(videoname):
         options["detect_direction"] = "true"
 
         res = client.general(image, options)
-        return res;
+        try:
+            w = res['words_result']
+            return w
+        except:
+            return False
 
     def is_img(f):
         return re.match(r'.+jpg', f);
@@ -49,7 +53,11 @@ def main(videoname):
     positionData = [];
     for imgName in pathDir:
         output.write('Start: ' + imgName + '\n')
-        ocrRes = get_OCR(imgName)['words_result']
+        ocrRes = get_OCR(imgName)
+        # fail then retry
+        while not(ocrRes):
+            print 'Fail: ' + imgName
+            ocrRes = get_OCR(imgName)
         for word in ocrRes:
             top = int(word['location']['top'])
             height = int(word['location']['height'])
