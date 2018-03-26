@@ -23,7 +23,7 @@ def main(videoname):
     else:  
         rval = False  
 
-    timeF = vc.get(5) * 1  #视频帧计数间隔频率 = 帧率 * 切片时间间隔  
+    timeF = vc.get(5) * conf['splitDuration']  #视频帧计数间隔频率 = 帧率 * 切片时间间隔  
     
     while rval:   #循环读取视频帧  
         rval, frame = vc.read()  
