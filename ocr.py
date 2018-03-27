@@ -37,6 +37,7 @@ def main(videoname):
         res = client.general(image, options)
         try:
             w = res['words_result']
+            print str(res)
             return w
         except:
             return False
@@ -55,7 +56,7 @@ def main(videoname):
         output.write('Start: ' + imgName + '\n')
         ocrRes = get_OCR(imgName)
         # fail then retry
-        while not(ocrRes):
+        while ocrRes == False:
             print 'Fail: ' + imgName
             ocrRes = get_OCR(imgName)
         for word in ocrRes:

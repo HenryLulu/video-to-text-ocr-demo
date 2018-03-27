@@ -3,5 +3,5 @@ import ocr
 
 video = '2'
 
-getframe.main(video)
+# getframe.main(video)
 ocr.main(video)
