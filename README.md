@@ -1,22 +1,5 @@
 # 是什么？
 利用OCR、OpenCV等提取视频硬字幕
-# 配置
-## 百度OCR
-在百度云开放平台注册，建应用得到APP_ID、API_KEY、SECRET_KEY，就可以用了。
-每天前500次调用免费。
-## config.py内容
-
-    def getConfig(videoname):
-        return {
-            'APP_ID': '百度OCR APP_ID',
-            'API_KEY': '百度OCR APP_KEY',
-            'SECRET_KEY': '百度OCR SECRET_KEY',
-            'videoDir': './video/' + videoname + '.mp4',
-            'imgDir': './videoframes/' + videoname,
-            'outputDir': './output/' + videoname + '/',
-
-            'splitDuration': 1
-        }
 
 # 做了什么
 从视频提取硬字幕要做以下事情：
@@ -39,6 +22,34 @@
 2. 去重后量最大的组就是字幕组
 
 ## 5、字幕分段（Todo）
+
+# 使用指南
+## 环境
+python：mac电脑自带，windows请自行百度安装
+## 获取代码
+方法一：git clone https://github.com/HenryLulu/video-to-text-ocr-demo.git
+方法二：右上角 - clone or download - download zip
+## 申请百度OCR
+https://console.bce.baidu.com/ai/#/ai/ocr/overview/index
+在百度云开放平台注册，创建文字识别应用得到APP_ID、API_KEY、SECRET_KEY，就可以用了。
+我们用到的是：通用文字识别（含位置信息版）。每天前500次调用免费。
+## 配置
+在代码目录新建一个 config.py 文件，贴入以下内容（配置项替换成自己的）
+
+    def getConfig(videoname):
+        return {
+            'APP_ID': '百度OCR APP_ID',
+            'API_KEY': '百度OCR APP_KEY',
+            'SECRET_KEY': '百度OCR SECRET_KEY',
+            'videoDir': './video/' + videoname + '.mp4',
+            'imgDir': './videoframes/' + videoname,
+            'outputDir': './output/' + videoname + '/',
+
+            'splitDuration': 1
+        }
+## 执行
+创建上面配置的 videoDir 中的文件夹，比如这里的 video，把视频文件放进去。
+修改 index.py video 为某个视频文件名，执行 python index.py
 
 # 测试结果
 ## 美妆教程
